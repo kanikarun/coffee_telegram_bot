@@ -39,7 +39,6 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/com.github.pengrad/java-telegram-bot-api
 	implementation 'com.github.pengrad:java-telegram-bot-api:9.2.1'
-	implementation 'org.postgresql:postgresql'
 	
 }
 
