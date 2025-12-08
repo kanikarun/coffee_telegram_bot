@@ -43,6 +43,19 @@ dependencies {
 	
 }
 
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    // PostgreSQL Driver - THIS IS REQUIRED!
+    runtimeOnly 'org.postgresql:postgresql'
+    
+    // Telegram Bot (if you're using it)
+    implementation 'org.telegram:telegrambots:6.8.0'
+    
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
