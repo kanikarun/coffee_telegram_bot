@@ -1,21 +1,14 @@
-# Stage 1: Build the JAR
-FROM eclipse-temurin:21-jdk-alpine AS build
+# Use official OpenJDK image
+FROM eclipse-temurin:17-jdk-alpine
+
+# Set working directory
 WORKDIR /app
 
-COPY . .
+# Copy built JAR from local build
+COPY build/libs/coffee-shop-html-telegram-bot-0.0.1-SNAPSHOT.jar app.jar
 
-# Give gradlew permission
-RUN chmod +x gradlew
-
-# Build the jar
-RUN ./gradlew clean bootJar
-
-# Stage 2: Run the application
-FROM eclipse-temurin:21-jdk-alpine
-WORKDIR /app
-
-# Copy the generated jar (use wildcard to avoid exact filename issues)
-COPY --from=build /app/build/libs/*.jar app.jar
-
+# Expose port (optional, Render will use $PORT)
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Run the app
+ENTRYPOINT ["java","-jar","/app/app.jar"]
