@@ -9,20 +9,40 @@
 <style>
 .receipt-card {
   font-family: 'Poppins', sans-serif;
-  border: 2px solid #8c4c2a;
+  border: none;
   background: #ffffff;
-  border-radius:25px;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-top: 6px solid #8c4c2a;  /* Premium top highlight */
+}
+
+.receipt-body div {
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #d8d8d8;
 }
 
 .receipt-body div:hover {
-  background-color: #f8f9fa;
+  background-color: #faf6f4;
   transition: 0.3s;
 }
 
 .receipt-body span {
-  font-size: 15px;
+  font-size: 16px;
+}
+
+.receipt-label {
+  font-weight: 600;
+  color: #8c4c2a;
+}
+
+.receipt-value {
+  font-weight: 500;
 }
 </style>
+
 
 <body>
     <!-- Navbar Start -->
@@ -35,61 +55,65 @@
     
     <!-- Page Header End -->
 
-    <!-- Success Start -->
-  <div class="container-fluid py-5">
-    <div class="container d-flex justify-content-center">
-      <div class="col-lg-5">
+   <!-- Success Start -->
+<div class="container-fluid py-5">
+  <div class="container d-flex justify-content-center">
+    <div class="col-lg-5">
 
-        <div class="receipt-card p-4 shadow-lg rounded-4 bg-white">
+      <div class="receipt-card">
 
-          <h3 class="text-center mb-3 text-success fw-bold">✔ Booking
-            Successful</h3>
+        <h3 class="text-center mb-3 text-success fw-bold">
+          ✔ Booking Successful
+        </h3>
 
-          <h5 class="text-center mb-4">
-            Thank you! <span th:text="${booked.name}"></span>
-          </h5>
+        <h5 class="text-center mb-4">
+          Thank you! <span th:text="${booked.name}"></span>
+        </h5>
 
-          <!-- Receipt body -->
-          <div class="receipt-body">
+        <!-- Receipt body -->
+        <div class="receipt-body">
 
-            <div class="d-flex justify-content-between border-bottom py-2">
-              <span class="fw-bold">Phone : </span> <span
-                th:text="${booked.phoneNumber}"></span>
-            </div>
-
-            <div class="d-flex justify-content-between border-bottom py-2">
-              <span class="fw-bold">Email : </span> <span
-                th:text="${booked.email}"></span>
-            </div>
-
-            <div class="d-flex justify-content-between border-bottom py-2">
-              <span class="fw-bold">Date : </span> <span
-                th:text="${booked.date}"></span>
-            </div>
-
-            <div class="d-flex justify-content-between border-bottom py-2">
-              <span class="fw-bold">Time : </span> <span
-                th:text="${booked.time}"></span>
-            </div>
-
-            <div class="d-flex justify-content-between border-bottom py-2">
-              <span class="fw-bold">Person : </span> <span
-                th:text="${booked.person}"></span>
-            </div>
-
+          <div>
+            <span class="receipt-label">Phone :</span>
+            <span class="receipt-value" th:text="${booked.phoneNumber}"></span>
           </div>
 
-          <!-- Footer -->
-          <div class="text-center mt-4">
-            <a href="/" class="btn btn-primary px-4 py-2 rounded-pill">
-              Back to Home </a>
+          <div>
+            <span class="receipt-label">Email :</span>
+            <span class="receipt-value" th:text="${booked.email}"></span>
+          </div>
+
+          <div>
+            <span class="receipt-label">Date :</span>
+            <span class="receipt-value" th:text="${booked.date}"></span>
+          </div>
+
+          <div>
+            <span class="receipt-label">Time :</span>
+            <span class="receipt-value" th:text="${booked.time}"></span>
+          </div>
+
+          <div>
+            <span class="receipt-label">Person :</span>
+            <span class="receipt-value" th:text="${booked.person}"></span>
           </div>
 
         </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-4">
+          <a href="/" class="btn btn-primary px-4 py-2 rounded-pill">
+            Back to Home
+          </a>
+        </div>
+
       </div>
+
     </div>
   </div>
-  <!-- Success End -->
+</div>
+<!-- Success End -->
+
 
    
 
